@@ -16,7 +16,7 @@ const margin = {left:50, right:50, bottom:50, top:50};
 const yTooltipOffset = 15; 
 
 
-// TODO: What does this code do? 
+// Adds svg with specified width, height, and viewbox
 const svg1 = d3
   .select("#hard-coded-bar")
   .append("svg")
@@ -41,27 +41,27 @@ const data1 = [
 
 */ 
 
-// TODO: What does this code do? 
+// Find max y
 let maxY1 = d3.max(data1, function(d) { return d.score; });
 
-// TODO: What does each line of this code do?   
+// Maps y data values to pixel values
 let yScale1 = d3.scaleLinear()
             .domain([0,maxY1])
             .range([height-margin.bottom,margin.top]); 
 
-// TODO: What does each line of this code do? 
+// Maps x data values to pixel values
 let xScale1 = d3.scaleBand()
             .domain(d3.range(data1.length))
             .range([margin.left, width - margin.right])
             .padding(0.1); 
 
-// TODO: What does each line of this code do?  
+// Add the y-axis to page
 svg1.append("g")
    .attr("transform", `translate(${margin.left}, 0)`) 
    .call(d3.axisLeft(yScale1)) 
    .attr("font-size", '20px'); 
 
-// TODO: What does each line of this code do? 
+//  Add the x-axis to page
 svg1.append("g")
     .attr("transform", `translate(0,${height - margin.bottom})`) 
     .call(d3.axisBottom(xScale1) 
@@ -74,26 +74,26 @@ svg1.append("g")
 
 */
 
-// TODO: What does each line of this code do? 
+// Adds a div with specified attributes
 const tooltip1 = d3.select("#hard-coded-bar") 
                 .append("div") 
                 .attr('id', "tooltip1") 
                 .style("opacity", 0) 
                 .attr("class", "tooltip"); 
 
-// TODO: What does each line of this code do?  
+// Shows name and score when hovering over graph
 const mouseover1 = function(event, d) {
   tooltip1.html("Name: " + d.name + "<br> Score: " + d.score + "<br>") 
           .style("opacity", 1);  
 }
 
-// TODO: What does each line of this code do? 
+// Sets the position to location of mouse
 const mousemove1 = function(event, d) {
   tooltip1.style("left", (event.x)+"px") 
           .style("top", (event.y + yTooltipOffset) +"px"); 
 }
 
-// TODO: What does this code do? 
+// Make mouse disappear when leaving page
 const mouseleave1 = function(event, d) { 
   tooltip1.style("opacity", 0); 
 }
@@ -104,7 +104,7 @@ const mouseleave1 = function(event, d) {
 
 */
 
-// TODO: What does each line of this code do? 
+// Adds data to graph and adds interactive functions
 svg1.selectAll(".bar") 
    .data(data1) 
    .enter()  
