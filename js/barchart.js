@@ -81,7 +81,7 @@ const tooltip1 = d3.select("#hard-coded-bar")
                 .style("opacity", 0) 
                 .attr("class", "tooltip"); 
 
-// Shows name and score when hovering over graph
+// Shows the name and score when hovering over graph
 const mouseover1 = function(event, d) {
   tooltip1.html("Name: " + d.name + "<br> Score: " + d.score + "<br>") 
           .style("opacity", 1);  
